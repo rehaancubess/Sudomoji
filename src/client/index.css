@@ -1,0 +1,489 @@
+@import 'tailwindcss';
+
+/* Game UI Theme System */
+:root {
+  /* Primary gradient colors */
+  --game-bg-start: #1e3a8a;
+  --game-bg-end: #3b82f6;
+  --game-bg-gradient: linear-gradient(135deg, var(--game-bg-start) 0%, var(--game-bg-end) 100%);
+  
+  /* Button colors */
+  --btn-primary-start: #fbbf24;
+  --btn-primary-end: #f59e0b;
+  --btn-primary-gradient: linear-gradient(135deg, var(--btn-primary-start) 0%, var(--btn-primary-end) 100%);
+  
+  --btn-secondary-start: #3b82f6;
+  --btn-secondary-end: #1d4ed8;
+  --btn-secondary-gradient: linear-gradient(135deg, var(--btn-secondary-start) 0%, var(--btn-secondary-end) 100%);
+  
+  --btn-creative-start: #8b5cf6;
+  --btn-creative-end: #7c3aed;
+  --btn-creative-gradient: linear-gradient(135deg, var(--btn-creative-start) 0%, var(--btn-creative-end) 100%);
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #e5e7eb;
+  --text-dark: #1f2937;
+  --text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  
+  /* Animation values */
+  --animation-fast: 0.2s;
+  --animation-normal: 0.3s;
+  --animation-slow: 0.5s;
+  --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Spacing and sizing */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Custom Tailwind theme colors */
+@theme {
+  --color-game-bg-start: #1e3a8a;
+  --color-game-bg-end: #3b82f6;
+  --color-btn-primary: #fbbf24;
+  --color-btn-secondary: #3b82f6;
+  --color-btn-creative: #8b5cf6;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e5e7eb;
+  --color-text-dark: #1f2937;
+}
+
+/* Game-like Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes wiggle {
+  0%, 7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%, 100% {
+    transform: rotateZ(0);
+  }
+}
+
+/* New game-specific animations */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0.7;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes buttonHover {
+  0% {
+    transform: scale(1);
+    box-shadow: var(--shadow-md);
+  }
+  100% {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+  }
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(0.98);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounce 1s ease-out;
+}
+
+.animate-pulse-gentle {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.8s ease-in-out;
+}
+
+/* Game UI Animation Classes */
+.animate-float-up {
+  animation: floatUp 8s linear infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+/* Enhanced entrance animations */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+/* Game Button Styles */
+.game-btn {
+  position: relative;
+  border-radius: var(--border-radius-lg);
+  padding: 16px 24px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-primary);
+  border: none;
+  cursor: pointer;
+  transition: all var(--animation-normal) var(--animation-easing);
+  box-shadow: var(--shadow-md);
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-decoration: none;
+  user-select: none;
+  will-change: transform, box-shadow;
+  contain: layout style;
+  text-shadow: var(--text-shadow);
+}
+
+/* Compact button variant for responsive design */
+.game-btn-compact {
+  padding: 12px 20px;
+  font-size: 16px;
+  min-height: 48px;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .game-btn-compact {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-height: 44px;
+    gap: 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game-btn-compact {
+    padding: 14px 22px;
+    font-size: 17px;
+    min-height: 52px;
+    gap: 11px;
+  }
+}
+
+.game-btn:hover {
+  animation: buttonHover var(--animation-normal) var(--animation-easing) forwards;
+}
+
+.game-btn:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+.game-btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.game-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+.game-btn:active {
+  animation: buttonPress var(--animation-fast) var(--animation-easing) forwards;
+}
+
+.game-btn-primary {
+  background: var(--btn-primary-gradient);
+  color: var(--text-dark);
+}
+
+.game-btn-secondary {
+  background: var(--btn-secondary-gradient);
+}
+
+.game-btn-creative {
+  background: var(--btn-creative-gradient);
+}
+
+.game-btn-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* Game Background */
+.game-background {
+  background: var(--game-bg-gradient);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+/* Floating Elements */
+.floating-number {
+  position: absolute;
+  font-size: 48px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+  contain: layout style paint;
+}
+
+.sparkle-effect {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform, opacity;
+  contain: layout style paint;
+}
+
+.sparkle-effect::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-btn {
+    padding: 16px 24px;
+    font-size: 16px;
+    min-height: 56px;
+  }
+  
+  .floating-number {
+    font-size: 36px;
+  }
+  
+  .game-btn-icon {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-btn {
+    padding: 14px 24px;
+    font-size: 15px;
+    min-height: 52px;
+  }
+  
+  .floating-number {
+    font-size: 28px;
+  }
+}
+
+/* Responsive viewport height utilities */
+.h-screen-safe {
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile browsers */
+}
+
+@media (max-height: 700px) {
+  .h-screen-safe {
+    height: 100vh;
+  }
+}
+
+/* Text shadow utility */
+.text-shadow {
+  text-shadow: var(--text-shadow);
+}
+
+/* Logo styling */
+.logo-image {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform var(--animation-normal) var(--animation-easing);
+}
+
+.logo-image:hover {
+  transform: scale(1.02);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-up,
+  .animate-sparkle,
+  .animate-breathe,
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-scale-in,
+  .animate-bounce-in,
+  .animate-pulse-gentle,
+  .animate-wiggle {
+    animation: none;
+  }
+  
+  .game-btn:hover {
+    animation: none;
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .game-btn {
+    border: 2px solid currentColor;
+  }
+  
+  .floating-number {
+    color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .sparkle-effect {
+    background: rgba(255, 255, 255, 1);
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

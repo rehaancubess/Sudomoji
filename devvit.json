@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "sudomoji",
+  "version": "0.1.0",
+  "description": "Daily emoji Sudoku puzzle where the winner designs tomorrow's challenge",
+  "post": {
+    "dir": "dist/client",
+    "entrypoints": {
+      "default": {
+        "entry": "index.html"
+      }
+    }
+  },
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "media": {
+    "dir": "assets"
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "🧩 Create Sudomoji",
+        "description": "Create a new emoji Sudoku puzzle",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/post-create"
+      },
+      {
+        "label": "🔄 Reset Sudomoji Data",
+        "description": "Purge all data and start fresh with puzzle #1",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/purge-restart"
+      }
+    ]
+  },
+  "triggers": {
+    "onAppInstall": "/internal/on-app-install"
+  },
+  "dev": {
+    "subreddit": "sudomoji_dev"
+  }
+}
